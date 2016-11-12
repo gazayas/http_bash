@@ -1,29 +1,33 @@
 #!/bin/bash
 
-# ハッシュが作れる？に回リストを読み込みたくない...
-# case分の方がいいかもしれない
-
-# -short (短い説明を入れる)
+# 次の２つを追加したい
+# -details (詳しい情報)
 # -jp (日本語の説明)
 
 # for loopでは、スペースを入れてしまうので、次の行が入ってあると、それは解決されます
-IFS=$'\n'
-
-# Sはstatusesのこと
-S['200']='200: success'
-S['404']='404: forbidden'
-
-for i in ${S[@]}; do
-  echo "${i}"
-done
+# IFS=$'\n'
 
 if [ -z $1 ]; then
-  echo 'please use -l for the whole list'
-  echo 'please use -h for help'
+   # echo 'please use -l for list of searchable codes'
+   echo 'please use -h for help'
 fi
 
-if [ $1 ] && [ $1 == '404' ]; then
-  echo '404: forbidden'
+function read () {
+  echo "${S[0]} ${S[1]}"
+}
+
+if [ $1 ] && [ $1 == '100' ]; then
+  S=([0]="100" [1]="Continue")
+elif [ $1 ] && [ $1 == '101' ]; then
+  S=([0]="101" [1]="Switching Protocols")
+elif [ $1 ] && [ $1 == '102' ]; then
+  S=([0]="102" [1]="Processing (WebDAV; RFC2518)")
 elif [ $1 ] && [ $1 == '200' ]; then
-  echo '200: success'
+  S=([0]="200" [1]="OK")
+elif [ $1 ] && [ $1 == '201' ]; then
+  S=([0]="201" [1]="Created")
+fi
+
+if [ $1 ]; then
+  read $S
 fi
