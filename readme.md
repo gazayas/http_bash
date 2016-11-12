@@ -11,7 +11,6 @@ A command line tool for looking up http protocols
 $ http 200
 #=> 200 OK
 
-# master list
 $ http -l
 #=>
 100 Continue
