@@ -3,7 +3,7 @@
 A command line tool for looking up http protocols
 
 ##Installation
-`$ curl -o /usr/local/bin/http https://raw.githubusercontent.com/gazayas/http/master/http`
+`$ curl -o /usr/local/bin/http https://raw.githubusercontent.com/gazayas/http/master/http` <br/>
 `$ chmod 755 /usr/local/bin/http`
 
 ##Usage
