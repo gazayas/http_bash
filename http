@@ -4,30 +4,116 @@
 # -details (詳しい情報)
 # -jp (日本語の説明)
 
-# for loopでは、スペースを入れてしまうので、次の行が入ってあると、それは解決されます
-# IFS=$'\n'
+# for loopでは、スペースを入れてしまうので、
+# 次の行が入ってあると、それは解決されます
+IFS=$'\n'
 
 if [ -z $1 ]; then
-   # echo 'please use -l for list of searchable codes'
-   echo 'please use -h for help'
+  echo 'Type a number like "http 200" to see what protocol it is,'
+  echo 'or type "http -l" for the master list'
 fi
 
-function read () {
-  echo "${S[0]} ${S[1]}"
+statuses=(
+  "100 Continue"
+  "101 Switching Protocols"
+  "102 Processing"
+  "200 OK"
+  "201 Created"
+  "202 Accepted"
+  "203 Non-Autoritative Information (since HTTP/1.1)"
+  "204 No Content"
+  "205 Reset Content"
+  "206 Partial Content (RFC 7233)"
+  "207 Multi-Status (WebDAV; RFC 4918)"
+  "208 Already Reported (WebDAV; RFC 5842)"
+  "300 Multiple Choices"
+  "301 Moved Permanently"
+  "302 Found"
+  "303 See Other (since HTTP/1.1)"
+  "304 Not Modified (RFC 7232)"
+  "305 Use Proxy (since HTTP/1.1)"
+  "306 Switch Proxy"
+  "307 Temporary Redirect (since HTTP/1.1)"
+  "308 Permanent Redirect(RFC 7538)"
+  "400 Bad Request"
+  "401 Unauthorized"
+  "402 Payment Required"
+  "403 Forbidden"
+  "404 Not Found"
+  "405 Method Not Allowed"
+  "406 Not Acceptable"
+  "407 Proxy Authentication Required (RFC 7235)"
+  "408 Request Time-out"
+  "409 Conflict"
+  "410 Gone"
+  "411 Length Required"
+  "412 Precondition Failed (RFC 7232)"
+  "413 Payload Too Large (RFC 7231)"
+  "414 URI Too Long (RFC 7231)"
+  "415 Unsupported Media Type"
+  "416 Range Not Satisfiable (RFC 7233)"
+  "417 Expectation Failed"
+  "418 I'm a teapot (RFC 2324)"
+  "421 Misdirected Request (RFC 7540)"
+  "422 Unprocessable Entity (WebDAV; RFC 4918)"
+  "423 Locked (WebDav; RFC 4918)"
+  "424 Failed Dependency (WebDAV; RFC 4918)"
+  "426 Upgrade Required"
+  "428 Precondition Required"
+  "429 Too Many Requests"
+  "431 Request Header Fields Too Large (RFC 6585)"
+  "451 Unavailable For Legal Reasons"
+  "500 Internal Server Error"
+  "501 Not Implemented"
+  "502 Bad Gateway"
+  "503 Service Unavailable"
+  "504 Gateway Time-out"
+  "505 HTTP Version Not Supported"
+  "506 Variant Also Negotiates (RFC 2295)"
+  "507 Insufficient Storage (WebDAV; RFC 4918)"
+  "508 Loop Detected (WebDAV; RFC 5842)"
+  "510 Not Extended (RFC 2774)"
+  "511 Network Authentication Required (RFC 6585)"
+  )
+
+# Colors 色
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+LIGHT_BLUE='\033[1;34m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+function colors () {
+  if [[ "$i" =~ ^1 ]]; then
+    printf "${CYAN}${i}${NC}\n"
+  elif [[ "$i" =~ ^2 ]]; then
+    printf "${GREEN}${i}${NC}\n"
+  elif [[ "$i" =~ ^3 ]]; then
+    printf "${LIGHT_BLUE}${i}${NC}\n"
+  elif [[ "$i" =~ ^4 ]]; then
+    printf "${RED}${i}${NC}\n"
+  elif [[ "$i" =~ ^5 ]]; then
+    printf "${YELLOW}${i}${NC}\n"
+  fi
 }
 
-if [ $1 ] && [ $1 == '100' ]; then
-  S=([0]="100" [1]="Continue")
-elif [ $1 ] && [ $1 == '101' ]; then
-  S=([0]="101" [1]="Switching Protocols")
-elif [ $1 ] && [ $1 == '102' ]; then
-  S=([0]="102" [1]="Processing (WebDAV; RFC2518)")
-elif [ $1 ] && [ $1 == '200' ]; then
-  S=([0]="200" [1]="OK")
-elif [ $1 ] && [ $1 == '201' ]; then
-  S=([0]="201" [1]="Created")
+# If an argument is passed: i.e. - "$ http 200"
+# 「$ http 200」みたいに引数を渡す場合
+if [ $1 ]; then
+  for i in ${statuses[@]};
+  do
+    if [[ "$i" =~ "${1}" ]]; then
+      colors $i
+    fi
+  done
 fi
 
-if [ $1 ]; then
-  read $S
+# If "-l" is passed as an argument (the master list)
+# 「-l」が引数として渡された場合（マスターリストを表示する）
+if [[ $1 =~ "-l" ]]; then
+  for i in ${statuses[@]}:
+  do
+    colors i
+  done
 fi
