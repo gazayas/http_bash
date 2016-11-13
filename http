@@ -396,7 +396,24 @@ done
 if [[ $1 =~ "-l" ]]; then
   for i in ${statuses[@]}:
   do
-    colors i
+    colors $i
+    if [ $d == true ]; then
+      if [ $jp == true ]; then
+        for det_jp in ${!details_jp[@]}:
+        do
+          if [[ "$i" =~ $det_jp ]]; then
+            echo "${details_jp[det_jp]}" # Japanese 日本語
+          fi
+        done
+      elif [ $jp == false ]; then
+        for det in ${!details[@]}:
+        do
+          if [[ "$i" =~ $det ]]; then
+            echo "${details[det]}" # English 英語
+          fi
+        done
+      fi
+    fi
   done
 fi
 
