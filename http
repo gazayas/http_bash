@@ -106,7 +106,7 @@ statuses=(
   )
 
 details=(
-  ["100"]="The server has received the request headers and the client should proceed to send the request body\
+ ["100"]="The server has received the request headers and the client should proceed to send the request body\
  (in case of a request for which a body needs to be sent; for example, a POST request). Sending a large request\
  body to a server after a request has been rejected for inappropriate headers would be inefficient. To have a\
   server check the request's headers, a client must sent Expect: 100-continue as a header in its initial request\
@@ -117,7 +117,7 @@ details=(
  complete the request. This code indicates that the server has received and is processing the request, but\
   no response is available yet. This prevents the client from timing out and assuming the request was lost"
 
-  ["200"]="Standard response for succesful HTTP requests. The actual response will depend on the request\
+ ["200"]="Standard response for succesful HTTP requests. The actual response will depend on the request\
  method used. In a GET request, the response will contain an entity correspoding to the requested resource.\
  In a POST request, the response will contain an entity describing or containing the result of the action."
  ["201"]="The request has been fulfilled, resulting in the creation of a new resource."
@@ -205,45 +205,45 @@ details=(
  ["415"]="The request entity has a media type which the server or resource does not support. For example,\
  the client uploads an image as image/svg+xml, but the server requires that images use a different format."
  ["416"]="The client has asked for a portion of the file (byte serving), but the server cannot supply that\
-  portion. For example, if the client asked for a part of the file that lies beyond the end of the file.\
-  Called \"Requested Range Not Satisfiable\" previously."
-  ["417"]="The server cannot meet the requirements of the Expect request-header field."
-  ["418"]="This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324,\
-  Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers.\
-  The RFC specifies this code should be returned by teapots requested to brew coffee. This HTTP status is\
-  used as an easter egg in some websites, including Google.com."
-  ["421"]="The request was directed at a server that is not able to produce a response (for example because\
-  a connection reuse)."
-  ["422"]="The request was well-formed but was unable to be followed due to semantic errors."
-  ["423"]="The resource that is being accessed is locked."
-  ["424"]="The request failed due to failure of a previous request (e.g., a PROPATCH)."
-  ["426"]="The client should switch to a different protocal such as TLS/1.0, given in the Upgrade header field."
-  ["428"]="The origin server requires the request to be conditional. Intended to prevent \"the 'lost update'\
-  problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile\
-  a third party has modified the state on the server, leading to a conflict.\""
-  ["429"]="The user has sent too many requests in a given amount of time. Intended for use with rate-limiting schemes."
-  ["431"]="The server is unwilling to process the request because either an individual header field, or all the\
-  header fields collectively, are too large."
-  ["451"]="A server operator has received a legal demand to deny access to a resource or to a set of resources\
-  that includes the requested resource. The code 451 was chosen as a reference to the novel Fahrenheit 451."
+ portion. For example, if the client asked for a part of the file that lies beyond the end of the file.\
+ Called \"Requested Range Not Satisfiable\" previously."
+ ["417"]="The server cannot meet the requirements of the Expect request-header field."
+ ["418"]="This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324,\
+ Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers.\
+ The RFC specifies this code should be returned by teapots requested to brew coffee. This HTTP status is\
+ used as an easter egg in some websites, including Google.com."
+ ["421"]="The request was directed at a server that is not able to produce a response (for example because\
+ a connection reuse)."
+ ["422"]="The request was well-formed but was unable to be followed due to semantic errors."
+ ["423"]="The resource that is being accessed is locked."
+ ["424"]="The request failed due to failure of a previous request (e.g., a PROPATCH)."
+ ["426"]="The client should switch to a different protocal such as TLS/1.0, given in the Upgrade header field."
+ ["428"]="The origin server requires the request to be conditional. Intended to prevent \"the 'lost update'\
+ problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile\
+ a third party has modified the state on the server, leading to a conflict.\""
+ ["429"]="The user has sent too many requests in a given amount of time. Intended for use with rate-limiting schemes."
+ ["431"]="The server is unwilling to process the request because either an individual header field, or all the\
+ header fields collectively, are too large."
+ ["451"]="A server operator has received a legal demand to deny access to a resource or to a set of resources\
+ that includes the requested resource. The code 451 was chosen as a reference to the novel Fahrenheit 451."
 
-  ["500"]="A generic error message, given when an unexpected condition was encountered and no more specific\
-  message is suitable."
-  ["501"]="The server either does not recognize the request method, or it lacks the ability to fulfill the\
-  request. Usually this implies future availability (e.g., a new feature of a web-service API)."
-  ["502"]="The server was acting as a gateway or proxy and received an invalid response from the upstream server."
-  ["503"]="The server is currently unavailable (because it is overloaded or down for maintenance).\
-  Generally, this is a temporary state."
-  ["504"]="The server was acting as a gateway or proxy and did not receive a timely response from\
-  the upstream server."
-  ["505"]="The server does not support the HTTP protocol version used in the request."
-  ["506"]="Transparent content negotiation for the request results in a circular reference."
-  ["507"]="The server is unable to store the representation needed to complete the request."
-  ["508"]="The server detected an infinite loop while processing the request (sent in lieu of 208 Already Reported)."
-  ["510"]="Further extensions to the request are required for the server to fulfill it."
-  ["511"]="The client needs to authenticate to gain network access. Intended for use by intercepting proxies\
-  used to control access to the network (e.g., \"captive portals\" used to require agreement to Terms of\
-  Service before granting full Internet access via a Wi-Fi hotspot)."
+ ["500"]="A generic error message, given when an unexpected condition was encountered and no more specific\
+ message is suitable."
+ ["501"]="The server either does not recognize the request method, or it lacks the ability to fulfill the\
+ request. Usually this implies future availability (e.g., a new feature of a web-service API)."
+ ["502"]="The server was acting as a gateway or proxy and received an invalid response from the upstream server."
+ ["503"]="The server is currently unavailable (because it is overloaded or down for maintenance).\
+ Generally, this is a temporary state."
+ ["504"]="The server was acting as a gateway or proxy and did not receive a timely response from\
+ the upstream server."
+ ["505"]="The server does not support the HTTP protocol version used in the request."
+ ["506"]="Transparent content negotiation for the request results in a circular reference."
+ ["507"]="The server is unable to store the representation needed to complete the request."
+ ["508"]="The server detected an infinite loop while processing the request (sent in lieu of 208 Already Reported)."
+ ["510"]="Further extensions to the request are required for the server to fulfill it."
+ ["511"]="The client needs to authenticate to gain network access. Intended for use by intercepting proxies\
+ used to control access to the network (e.g., \"captive portals\" used to require agreement to Terms of\
+ Service before granting full Internet access via a Wi-Fi hotspot)."
   )
 
 details_jp=(
