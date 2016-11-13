@@ -1,16 +1,15 @@
 #!/bin/bash
 
-# 次の２つを追加したい
-# -details (詳しい情報)
-# -jp (日本語の説明)
-
 # for loopでは、スペースを入れてしまうので、
 # 次の行が入ってあると、それは解決されます
 IFS=$'\n'
 
 if [ -z $1 ]; then
-  echo 'Type a number like "http 200" to see what protocol it is,'
-  echo 'or type "http -l" for the master list'
+  echo 'Type a number like "http 200" to see what status it is,'
+  echo '-d => details'
+  echo '-jp => Japanese'
+  echo '-l => master list'
+
   exit 1
 fi
 
@@ -26,13 +25,16 @@ do
     elif [[ "$k" == "-jp" ]]; then
       jp=true
     fi
-  elif [ -z $k ]; then
-    echo 'Type a number like "http 200" to see what protocol it is,'
-    echo 'or type "http -l" for the master list'
-    exit 1
   fi
 done
 
+if [ $jp == true ] && [ $d == false ]; then
+  echo "日本語の詳細を見るには、「-d」も入力しないといけません"
+  exit 1
+fi
+
+# Variables
+# 変数の定義
 statuses=(
   "100 Continue"
   "101 Switching Protocols"
