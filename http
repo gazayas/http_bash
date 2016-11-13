@@ -4,11 +4,16 @@
 # 次の行が入ってあると、それは解決されます
 IFS=$'\n'
 
-if [ -z $1 ]; then
+if [ -z $1 ] || [ $1 == "-h" ] || [ $1 == "help" ] || [ $1 == "-help" ]; then
   echo 'Type a number like "http 200" to see what status it is,'
   echo '-d => details'
   echo '-jp => Japanese'
   echo '-l => master list'
+
+  echo '「http 200」という風に書くと、ステータスが見えます'
+  echo '-d => 詳細'
+  echo '-jp => 日本語（「-d」と一緒に使わないといけません）'
+  echo '-l => すべてのステータスのリスト'
 
   exit 1
 fi
