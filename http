@@ -11,6 +11,7 @@ IFS=$'\n'
 if [ -z $1 ]; then
   echo 'Type a number like "http 200" to see what protocol it is,'
   echo 'or type "http -l" for the master list'
+  exit 1
 fi
 
 statuses=(
@@ -85,6 +86,10 @@ YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
 function colors () {
+  if [ $# -eq 0 ]; then
+    echo "No arguments supplied"
+    exit 1
+  fi
   if [[ "$i" =~ ^1 ]]; then
     printf "${CYAN}${i}${NC}\n"
   elif [[ "$i" =~ ^2 ]]; then
@@ -103,7 +108,7 @@ function colors () {
 if [ $1 ]; then
   for i in ${statuses[@]};
   do
-    if [[ "$i" =~ "${1}" ]]; then
+    if [[ "$i" =~ ^"${1}" ]]; then
       colors $i
     fi
   done
@@ -117,3 +122,5 @@ if [[ $1 =~ "-l" ]]; then
     colors i
   done
 fi
+
+exit 0
