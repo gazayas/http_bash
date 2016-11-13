@@ -11,6 +11,12 @@ A command line tool for looking up http statuses
 $ http 200
 #=> 200 OK
 
+$ http 100 200 404
+#=>
+100 Continue
+200 OK
+404 Not Found
+
 $ http -l
 #=>
 100 Continue

@@ -104,7 +104,9 @@ function colors () {
 }
 
 # If an argument is passed: i.e. - "$ http 200"
+# multiple statuses can be declared as well: "$ http 200 403"
 # 「$ http 200」みたいに引数を渡す場合
+# 複数のステータスも入れられます：「$ http 200 403」
 for k in $@
 do
   if [ $k ]; then
