@@ -105,15 +105,17 @@ function colors () {
 
 # If an argument is passed: i.e. - "$ http 200"
 # 「$ http 200」みたいに引数を渡す場合
-if [ $1 ]; then
-  for i in ${statuses[@]};
-  do
-    if [[ "$i" =~ ^"${1}" ]]; then
-      colors $i
-    fi
-  done
-fi
-
+for k in $@
+do
+  if [ $k ]; then
+    for i in ${statuses[@]};
+    do
+      if [[ "$i" =~ ^"${k}" ]]; then
+        colors $i
+      fi
+    done
+  fi
+done
 # If "-l" is passed as an argument (the master list)
 # 「-l」が引数として渡された場合（マスターリストを表示する）
 if [[ $1 =~ "-l" ]]; then
