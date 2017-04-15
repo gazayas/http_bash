@@ -1,12 +1,12 @@
-#http
+# http
 
 A command line tool for looking up http statuses
 
-##Installation
+## Installation
 `$ curl -o /usr/local/bin/http https://raw.githubusercontent.com/gazayas/http/master/http` <br/>
 `$ chmod 755 /usr/local/bin/http`
 
-##Usage
+## Usage
 ```
 $ http 200
 200 OK
@@ -25,7 +25,8 @@ $ http 417 -d
 417 Expectation Failed
 The server cannot meet the requirements of the Expect request-header field.
 
-$ http 200 404 503 -d  #Details for multiple statuses can be looked up all at once
+# Details for multiple status can be looked up all at once
+$ http 200 404 503 -d
 
 $ http -l
 100 Continue
@@ -39,3 +40,4 @@ $ http -l
 # The master list with details
 $ http -l -d
 ```
+
