@@ -1,3 +1,6 @@
+There is a better version of this at [gazayas/httpd](http://www.github.com/gazayas/httpd).<br/>
+Please use that command line tool instead
+
 # http
 
 A command line tool for looking up http statuses
