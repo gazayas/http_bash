@@ -1,6 +1,3 @@
-There is a better version of this at [gazayas/httpd](http://www.github.com/gazayas/httpd).<br/>
-Please use that command line tool instead
-
 # http
 
 A command line tool for looking up http statuses
@@ -44,3 +41,6 @@ $ http -l
 $ http -l -d
 ```
 
+I made a Ruby gem of this as well,<br />
+so feel free to check that out here:<br />
+[httpd](http://www.github.com/gazayas/httpd).<br/>
