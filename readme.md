@@ -6,7 +6,7 @@ Please use that command line tool instead
 A command line tool for looking up http statuses
 
 ## Installation
-`$ curl -o /usr/local/bin/http https://raw.githubusercontent.com/gazayas/http/master/http` <br/>
+`$ curl -o /usr/local/bin/http https://raw.githubusercontent.com/gazayas/http_bash/master/http` <br/>
 `$ chmod 755 /usr/local/bin/http`
 
 ## Usage
